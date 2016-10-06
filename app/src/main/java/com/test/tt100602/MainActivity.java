@@ -15,15 +15,19 @@ public class MainActivity extends AppCompatActivity
 {
     CheckBox chk;
     RadioButton rb1, rb2, rb3;
+    RadioButton rb[];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        rb = new RadioButton[3];
         chk = (CheckBox) findViewById(R.id.checkBox);
         rb1 = (RadioButton) findViewById(R.id.radioButton3);
         rb2 = (RadioButton) findViewById(R.id.radioButton4);
         rb3 = (RadioButton) findViewById(R.id.radioButton5);
+        rb[0] = rb1;
+        rb[1] = rb2;
+        rb[2] = rb3;
         rb1.setOnClickListener(this);
         rb2.setOnClickListener(this);
         rb3.setOnClickListener(this);
