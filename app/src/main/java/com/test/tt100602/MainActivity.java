@@ -7,6 +7,7 @@ import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.RadioButton;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,6 +17,7 @@ public class MainActivity extends AppCompatActivity
     CheckBox chk;
     RadioButton rb1, rb2, rb3;
     RadioButton rb[];
+    SeekBar sb;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +27,7 @@ public class MainActivity extends AppCompatActivity
         rb1 = (RadioButton) findViewById(R.id.radioButton3);
         rb2 = (RadioButton) findViewById(R.id.radioButton4);
         rb3 = (RadioButton) findViewById(R.id.radioButton5);
+        sb = (SeekBar) findViewById(R.id.seekBar);
         rb[0] = rb1;
         rb[1] = rb2;
         rb[2] = rb3;
@@ -43,6 +46,24 @@ public class MainActivity extends AppCompatActivity
                 {
                     Toast.makeText(MainActivity.this, "沒有勾", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        sb.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                TextView tv2 = (TextView) findViewById(R.id.textView2);
+                tv2.setText(String.valueOf(progress));
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
             }
         });
     }
