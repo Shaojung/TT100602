@@ -2,18 +2,32 @@ package com.test.tt100602;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+    implements View.OnClickListener
+{
     CheckBox chk;
+    RadioButton rb1, rb2, rb3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         chk = (CheckBox) findViewById(R.id.checkBox);
+        rb1 = (RadioButton) findViewById(R.id.radioButton3);
+        rb2 = (RadioButton) findViewById(R.id.radioButton4);
+        rb3 = (RadioButton) findViewById(R.id.radioButton5);
+        rb1.setOnClickListener(this);
+        rb2.setOnClickListener(this);
+        rb3.setOnClickListener(this);
+
         chk.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -27,5 +41,11 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public void onClick(View v) {
+        TextView tv = (TextView) v;
+        Toast.makeText(MainActivity.this, tv.getText().toString(), Toast.LENGTH_SHORT).show();
     }
 }
